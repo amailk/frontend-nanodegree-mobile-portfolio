@@ -28,4 +28,4 @@ gulp.task('inline', function(){
        .pipe(gulp.dest('build/'));
 });
 
-gulp.task('default', ['scripts', 'inline']);
+gulp.task('default', ['scripts', 'images', 'inline']);
