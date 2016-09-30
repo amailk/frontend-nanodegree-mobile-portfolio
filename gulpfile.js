@@ -1,19 +1,31 @@
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
-    cleanCSS = require('gulp-clean-css');
+    imagemin = require('gulp-imagemin'),
+    inlineCSS = require('gulp-inline-css');
 
 gulp.task('scripts', function(){
     gulp.src('js/*.js')
         .pipe(uglify())
         .pipe(rename('app.min.js'))
-        .pipe(gulp.dest('js/'));
+        .pipe(gulp.dest('build/js/'));
 });
 
-gulp.task('styles', function(){
-    gulp.src('css/*.css')
-        .pipe(cleanCSS())
-        .pipe(gulp.dest('minCSS'));
+gulp.task('images', function(){
+    gulp.src('img/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('build/img/'));
 });
 
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('inline', function(){
+   gulp.src('index.html')
+       .pipe(inlineCSS({
+           applyStyleTags: true,
+           applyLinkTags: true,
+           removeStyleTags: true,
+           removeLinkTags: true
+       }))
+       .pipe(gulp.dest('build/'));
+});
+
+gulp.task('default', ['scripts', 'inline']);
