@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    cleanCSS = require('gulp-clean-css');
 
 gulp.task('scripts', function(){
     gulp.src('js/*.js')
@@ -9,4 +10,10 @@ gulp.task('scripts', function(){
         .pipe(gulp.dest('js/'));
 });
 
-gulp.task('default', ['scripts']);
+gulp.task('styles', function(){
+    gulp.src('css/*.css')
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('minCSS'));
+});
+
+gulp.task('default', ['scripts', 'styles']);
