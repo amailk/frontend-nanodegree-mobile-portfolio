@@ -504,10 +504,11 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
+  var scrollTop = document.body.scrollTop;
 
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = Math.sin((scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -529,9 +530,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var s = 256;
   // Only have enough columns to fit the scren width
-  var cols = screen.width / s;
+  var cols = Math.ceil(screen.width / s);
   // Only have enough rows to fit the screen height
-  var rows = screen.height / s;
+  var rows = Math.ceil(screen.height / s);
   // Only have enough mover elements that's required to fill the screen
   var numElements = cols * rows;
   for (var i = 0; i < numElements; i++) {
