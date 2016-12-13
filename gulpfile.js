@@ -17,12 +17,6 @@ gulp.task('images', function(){
         .pipe(gulp.dest('build/img/'));
 });
 
-gulp.task('views-images', function(){
-    gulp.src('views/images/*')
-        .pipe(imagemin())
-        .pipe(gulp.dest('build/views/images/'));
-});
-
 gulp.task('inline', function(){
    gulp.src('index.html')
        .pipe(inlineCSS({
@@ -34,4 +28,15 @@ gulp.task('inline', function(){
        .pipe(gulp.dest('build/'));
 });
 
-gulp.task('default', ['scripts', 'images', 'views-images', 'inline']);
+gulp.task('move-views', function(){
+  gulp.src('views/*')
+      .pipe(gulp.dest('build/views/'));
+});
+
+gulp.task('views-images', function(){
+    gulp.src('views/images/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('build/views/images/'));
+});
+
+gulp.task('default', ['scripts', 'images', 'move-views', 'views-images', 'inline']);
