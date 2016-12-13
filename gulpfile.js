@@ -29,7 +29,7 @@ gulp.task('inline', function(){
 });
 
 gulp.task('move-views', function(){
-  gulp.src('views/*')
+  gulp.src('views/**/*')
       .pipe(gulp.dest('build/views/'));
 });
 
