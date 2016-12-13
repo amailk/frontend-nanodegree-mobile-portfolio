@@ -1,0 +1,30 @@
+{
+  "name": "weboptimizing",
+  "version": "1.0.0",
+  "description": "udacity project",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-inline-css": "^3.1.0",
+    "gulp-uglify": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amailk/frontend-nanodegree-mobile-portfolio.git"
+  },
+  "keywords": [
+    "udacity"
+  ],
+  "author": "Ama Liyanage",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amailk/frontend-nanodegree-mobile-portfolio/issues"
+  },
+  "homepage": "https://github.com/amailk/frontend-nanodegree-mobile-portfolio#readme"
+}
